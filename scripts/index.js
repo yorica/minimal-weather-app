@@ -1,5 +1,5 @@
-function showDate() {
-  let now = new Date();
+function showDate(timestamp) {
+  let now = new Date(timestamp);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   let day = days[now.getDay()];
   let months = [
@@ -26,8 +26,8 @@ function showDate() {
   dayElement.innerHTML = day;
 }
 
-function showTime() {
-  let now = new Date();
+function showTime(timestamp) {
+  let now = new Date(timestamp);
   let hour = now.getHours();
   if (hour < 10) {
     hour = `0${hour}`;
@@ -71,11 +71,11 @@ function showTemp(response) {
   temp.innerHTML = `${curTemp}°C`;
   let desc = document.querySelector("#desc");
   desc.innerHTML = response.data.weather[0].description;
+  showDate(response.data.dt * 1000);
+  showTime(response.data.dt * 1000);
 }
 
 let cityForm = document.querySelector("#search-city");
 cityForm.addEventListener("submit", changeCity);
 
 findCity("Kyiv");
-showDate();
-showTime();
