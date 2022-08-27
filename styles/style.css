@@ -14,12 +14,15 @@
 }
 
 .date {
+  text-align: center;
   font-size: 22px;
-  padding-right: 6px;
+  padding-right: 0;
 }
 
 .info {
   font-size: 10px;
+  padding-left: 0;
+  max-width: 30px;
 }
 
 .round {
