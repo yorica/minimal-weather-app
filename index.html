@@ -12,6 +12,11 @@
   <script src="https://kit.fontawesome.com/a34ffea86a.js" crossorigin="anonymous"></script>
 
   <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Urbanist:wght@200;300;400;500&display=swap"
+    rel="stylesheet">
 
 
   <!--Bootstrap-->
@@ -46,7 +51,7 @@
         </div>
         <div class="col-8">
           <form id="search-city">
-            <input type="search" id="city" placeholder="Enter city name" autocomplete="off">
+            <input type="search" id="city" placeholder="Enter city name" autocomplete="off" autofocus>
             <button type="submit" class="round">
               <i class="fa-solid fa-magnifying-glass-location"></i></button>
             <button id="home" class="round">
@@ -54,19 +59,18 @@
             <button id="temp" class="round"><strong>°F</strong></button>
         </div>
       </div>
-      <div class="row">
-        <div class="col-4">
+
+      <div class="row align-items-center today">
+        <div class="col-6">
           <h1>KYIV, UA</h1>
-          <p>H: ...% W: ...%</p>
+          <p class="w-info">H: ...% W: ...%</p>
         </div>
-        <div class="col-4">
-          <i class="fa-solid fa-cloud-sun w-icon"></i>
-          <p>Cloudy</p>
-        </div>
-        <div class="col-4">
-          24C
+        <div class="col-6">
+          <p class="weather"><i class="fa-solid fa-cloud-sun w-icon"></i> <span class="deg">24°C</span></p>
+          <p class="description"><em>cloudy<em></p>
         </div>
       </div>
+
 
     </div>
   </div>
