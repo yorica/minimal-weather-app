@@ -45,7 +45,12 @@ function changeCity(event) {
   event.preventDefault();
   let cityname = document.querySelector("#city");
   let myCity = cityname.value.toLowerCase();
-  let weUrl = `https://api.openweathermap.org/data/2.5/weather?q=${myCity}&appid=${apiKey}&units=metric`;
+  findCity(myCity);
+}
+
+function findCity(city) {
+  let apiKey = "9ebbcc5f37304a3ed740e8af90680e70";
+  let weUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(weUrl).then(showTemp);
 }
 
@@ -64,14 +69,13 @@ function showTemp(response) {
   let curTemp = Math.floor(response.data.main.temp);
   let temp = document.querySelector("#deg");
   temp.innerHTML = `${curTemp}°C`;
-  let curDescrpt = response.data.weather[0].description;
   let desc = document.querySelector("#desc");
-  desc.innerHTML = `${curDescrpt}`;
+  desc.innerHTML = response.data.weather[0].description;
 }
 
-let apiKey = "9ebbcc5f37304a3ed740e8af90680e70";
 let cityForm = document.querySelector("#search-city");
 cityForm.addEventListener("submit", changeCity);
 
+findCity("Kyiv");
 showDate();
 showTime();
