@@ -54,7 +54,9 @@ h1 {
 }
 
 .w-icon {
-  font-size: 40px;
+  filter: grayscale();
+  width: 50px;
+ 
 }
 
 .deg {

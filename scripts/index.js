@@ -70,6 +70,8 @@ function showTemp(response) {
   temp.innerHTML = `${cTemp}°C`;
   let desc = document.querySelector("#desc");
   desc.innerHTML = response.data.weather[0].description;
+  let icon = document.querySelector("#w-icon");
+  icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
   showDate(response.data.dt * 1000);
   showTime(response.data.dt * 1000);
 }
