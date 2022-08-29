@@ -10,10 +10,27 @@ h1 {
   margin: 0;
 }
 
+footer {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  text-align: center;
+  color: darkgray;
+}
+
+.source-link {
+  text-decoration: none;
+  color: rgb(122, 122, 122);
+  transition: all 200ms ease-in-out;
+}
+
+.source-link:hover {
+  color: rgb(68, 66, 66);
+}
+
 .wrap-app {
   max-width: 500px;
   border-bottom: 0.5px solid rgba(39, 37, 37, 0.507);
-  margin: 10px;
+  margin: 10px auto;
 }
 
 .info-bar {
@@ -78,3 +95,4 @@ h1 {
   text-align: center;
   line-height: 1;
 }
+
