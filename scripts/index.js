@@ -53,8 +53,36 @@ function findCity(city) {
   axios.get(weUrl).then(showTemp);
 }
 
+function showIcon(iCode) {
+  console.log(iCode);
+  let iconMap = {
+    "01d": "fa-sun",
+    "01n": "fa-moon",
+    "02d": "fa-cloud-sun",
+    "02n": "fa-cloud-moon",
+    "03d": "fa-cloud-sun",
+    "03n": "fa-cloud-moon",
+    "04d": "fa-cloud",
+    "04n": "fa-cloud",
+    "09d": "fa-cloud-showers-heavy",
+    "09n": "fa-cloud-showers-heavy",
+    "10d": "fa-cloud-rain",
+    "10n": "fa-cloud-rain",
+    "11d": "fa-cloud-bolt",
+    "11d": "fa-cloud-bolt",
+    "13d": "fa-snowflake",
+    "13n": "fa-snowflake",
+    "50d": "fa-smog",
+    "50n": "fa-smog",
+  };
+
+  let iconClass = iconMap[iCode];
+  console.log(iconClass);
+  let curIcon = document.querySelector("#icon");
+  curIcon.setAttribute("class", `fa-solid ${iconClass} w-icon`);
+}
+
 function showTemp(response) {
-  console.log(response);
   let h1 = document.querySelector("h1");
   let myCity = response.data.name;
   let myCountry = response.data.sys.country;
@@ -70,6 +98,9 @@ function showTemp(response) {
   temp.innerHTML = `${cTemp}°C`;
   let desc = document.querySelector("#desc");
   desc.innerHTML = response.data.weather[0].description;
+  let iCode = response.data.weather[0].icon;
+  console.log(iCode);
+  showIcon(iCode);
   showDate(response.data.dt * 1000);
   showTime(response.data.dt * 1000);
 }
