@@ -82,6 +82,24 @@ function showIcon(iCode) {
   curIcon.setAttribute("class", `fa-solid ${iconClass} w-icon`);
 }
 
+function getForecast() {
+  let weForecast = document.querySelector("#up-weather");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+     <div class="col-2">
+       <p class="day">${day}</p>
+        <i class="fa-solid fa-cloud-sun w-icon-2"></i>
+        <span class="temp-max">15°C</span><span class="temp-min">10°C</span>
+      </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  weForecast.innerHTML = forecastHTML;
+}
+
 function showTemp(response) {
   let h1 = document.querySelector("h1");
   let myCity = response.data.name;
@@ -146,3 +164,4 @@ let btn = document.querySelector("#temp");
 btn.addEventListener("click", convertDeg);
 
 findCity("Kyiv");
+getForecast();

@@ -12,7 +12,7 @@ h1 {
 
 .wrap-app {
   max-width: 500px;
-  border-bottom: 0.5px solid rgba(39, 37, 37, 0.507);
+
   margin: 10px;
 }
 
@@ -45,6 +45,7 @@ h1 {
 .today {
   margin: 1px;
   max-width: 500px;
+  border-bottom: 0.5px solid rgba(39, 37, 37, 0.507);
 }
 
 .w-info {
@@ -75,4 +76,36 @@ h1 {
   font-style: italic;
   text-align: center;
   line-height: 1;
+}
+
+.day {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  background: black;
+  color: white;
+}
+
+.w-icon-2 {
+  font-size: 30px;
+  text-align: center;
+  display: block;
+}
+
+.temp-max {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  padding: 2px;
+  color: black;
+  border: solid 1px black;
+}
+
+.temp-min {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  padding: 2px;
+  background: black;
+  color: white;
+  border: solid 1px black;
 }
