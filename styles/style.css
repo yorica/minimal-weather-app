@@ -94,18 +94,22 @@ h1 {
 }
 
 .temp-max {
+  text-align: center;
   font-family: "Roboto", sans-serif;
-  font-size: 12px;
+  font-size: 11px;
+  width: 32px;
   padding: 2px;
   color: black;
   border: solid 1px black;
 }
 
 .temp-min {
+  text-align: center;
   font-family: "Roboto", sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   padding: 2px;
   background: black;
   color: white;
   border: solid 1px black;
+  width: 32px;
 }

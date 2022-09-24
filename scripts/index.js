@@ -41,6 +41,13 @@ function showTime(timestamp) {
   time.innerHTML = `${hour}:${minutes}`;
 }
 
+function forecastDates(timestamp) {
+  let now = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let day = days[now.getDay()];
+  return day;
+}
+
 function changeCity(event) {
   event.preventDefault();
   let cityname = document.querySelector("#city");
@@ -77,27 +84,39 @@ function showIcon(iCode) {
   };
 
   let iconClass = iconMap[iCode];
-  console.log(iconClass);
-  let curIcon = document.querySelector("#icon");
-  curIcon.setAttribute("class", `fa-solid ${iconClass} w-icon`);
+  return iconClass;
 }
 
-function getForecast() {
+function showForecast(response) {
+  let forecast = response.data.daily;
   let weForecast = document.querySelector("#up-weather");
   let forecastHTML = `<div class="row">`;
-  let days = ["Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 7) {
+      let iconCode = forecastDay.weather[0].icon;
+      console.log(iconCode);
+      forecastHTML =
+        forecastHTML +
+        `
      <div class="col-2">
-       <p class="day">${day}</p>
-        <i class="fa-solid fa-cloud-sun w-icon-2"></i>
-        <span class="temp-max">15°C</span><span class="temp-min">10°C</span>
+       <p class="day">${forecastDates(forecastDay.dt)}</p>
+        <i class="fa-solid ${showIcon(iconCode)} w-icon-2"></i>
+        <span class="temp-max">${Math.round(
+          forecastDay.temp.max
+        )}°C</span><span class="temp-min">${Math.round(
+          forecastDay.temp.min
+        )}°C</span>
       </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   weForecast.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let weUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(weUrl).then(showForecast);
 }
 
 function showTemp(response) {
@@ -117,10 +136,12 @@ function showTemp(response) {
   let desc = document.querySelector("#desc");
   desc.innerHTML = response.data.weather[0].description;
   let iCode = response.data.weather[0].icon;
-  console.log(iCode);
-  showIcon(iCode);
+  let curIcon = document.querySelector("#icon");
+  curIcon.setAttribute("class", `fa-solid ${showIcon(iCode)} w-icon`);
   showDate(response.data.dt * 1000);
   showTime(response.data.dt * 1000);
+
+  getForecast(response.data.coord);
 }
 
 function goHome(event) {
@@ -164,4 +185,3 @@ let btn = document.querySelector("#temp");
 btn.addEventListener("click", convertDeg);
 
 findCity("Kyiv");
-getForecast();
