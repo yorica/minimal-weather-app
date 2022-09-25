@@ -93,23 +93,20 @@ h1 {
   display: block;
 }
 
-.temp-max {
+.temps {
+  margin-top: 2px;
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 11px;
-  width: 32px;
-  padding: 2px;
-  color: black;
-  border: solid 1px black;
-}
-
-.temp-min {
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 11px;
-  padding: 2px;
   background: black;
-  color: white;
   border: solid 1px black;
-  width: 32px;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  font-size: 11px;
+}
+.temp-max,
+.temp-min {
+  padding: 2px;
+}
+.temp-min {
+  color: rgb(179, 177, 177);
+  text-shadow: 0.5px 0 0.2px rgb(133, 132, 132);
 }

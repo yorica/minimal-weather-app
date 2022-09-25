@@ -1,5 +1,5 @@
-function showDate(timestamp) {
-  let now = new Date(timestamp);
+function showDate() {
+  let now = new Date();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   let day = days[now.getDay()];
   let months = [
@@ -26,8 +26,8 @@ function showDate(timestamp) {
   dayElement.innerHTML = day;
 }
 
-function showTime(timestamp) {
-  let now = new Date(timestamp);
+function showTime() {
+  let now = new Date();
   let hour = now.getHours();
   if (hour < 10) {
     hour = `0${hour}`;
@@ -61,7 +61,6 @@ function findCity(city) {
 }
 
 function showIcon(iCode) {
-  console.log(iCode);
   let iconMap = {
     "01d": "fa-sun",
     "01n": "fa-moon",
@@ -102,11 +101,13 @@ function showForecast(response) {
      <div class="col-2">
        <p class="day">${forecastDates(forecastDay.dt)}</p>
         <i class="fa-solid ${showIcon(iconCode)} w-icon-2"></i>
-        <span class="temp-max">${Math.round(
-          forecastDay.temp.max
-        )}°C</span><span class="temp-min">${Math.round(
+        <p class="temps">
+          <span class="temp-max cel">${Math.round(
+            forecastDay.temp.max
+          )}</span> <span class="temp-min cel">${Math.round(
           forecastDay.temp.min
-        )}°C</span>
+        )}</span>
+        </p>
       </div>`;
     }
   });
@@ -138,8 +139,6 @@ function showTemp(response) {
   let iCode = response.data.weather[0].icon;
   let curIcon = document.querySelector("#icon");
   curIcon.setAttribute("class", `fa-solid ${showIcon(iCode)} w-icon`);
-  showDate(response.data.dt * 1000);
-  showTime(response.data.dt * 1000);
 
   getForecast(response.data.coord);
 }
@@ -185,3 +184,5 @@ let btn = document.querySelector("#temp");
 btn.addEventListener("click", convertDeg);
 
 findCity("Kyiv");
+showDate();
+showTime();
