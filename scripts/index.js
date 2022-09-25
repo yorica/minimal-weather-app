@@ -94,7 +94,6 @@ function showForecast(response) {
   forecast.forEach(function (forecastDay, index) {
     if (index > 0 && index < 7) {
       let iconCode = forecastDay.weather[0].icon;
-      console.log(iconCode);
       forecastHTML =
         forecastHTML +
         `
