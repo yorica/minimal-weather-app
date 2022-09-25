@@ -29,7 +29,7 @@ footer {
 
 .wrap-app {
   max-width: 500px;
-
+  border-bottom: 0.5px solid rgba(39, 37, 37, 0.507);
   margin: 10px auto;
 }
 
@@ -72,7 +72,8 @@ footer {
 }
 
 .w-icon {
-  font-size: 40px;
+  filter: grayscale();
+  width: 50px;
 }
 
 .deg {
