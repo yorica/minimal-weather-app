@@ -130,9 +130,15 @@ function showTemp(response) {
   let curWind = response.data.wind.speed;
   let wind = document.querySelector("#wind");
   wind.innerHTML = `${curWind}m/s`;
-  cTemp = Math.floor(response.data.main.temp);
   let temp = document.querySelector("#deg");
-  temp.innerHTML = `${cTemp}°C`;
+  cTemp = Math.floor(response.data.main.temp);
+  if (temp.className == "deg fah") {
+    let fTemp = Math.floor(cTemp * 1.8 + 32);
+    temp.innerHTML = `${fTemp}°F`;
+  } else {
+    temp.innerHTML = `${cTemp}°C`;
+  }
+
   let desc = document.querySelector("#desc");
   desc.innerHTML = response.data.weather[0].description;
   let iCode = response.data.weather[0].icon;
